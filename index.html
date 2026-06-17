@@ -1047,8 +1047,15 @@
 <section id="videoreaccion">
   <div class="sec-header fade-up"><div class="sec-tag">Módulo III</div><h2 class="sec-title">Video-reacción <em>Crítica</em></h2></div>
   <div class="content-card fade-up" style="background:var(--bg-card); padding:40px; border-radius:28px; border:1px solid var(--border-glow);">
-    <div style="position:relative; padding-bottom:56.25%; height:0;"><iframe id="videoFrame" style="position:absolute; top:0; left:0; width:100%; height:100%; border-radius:16px;" frameborder="0" allowfullscreen></iframe></div>
-    <div class="url-input-group"><label>📺 URL del video (YouTube):</label><input type="text" id="videoUrlInput" placeholder="https://youtu.be/U0Y9Dj4erkQ"><button class="save-btn" onclick="saveVideoUrl()">Guardar video</button></div>
+    <div style="position:relative; padding-bottom:56.25%; height:0;">
+      <iframe 
+        id="videoFrame" 
+        style="position:absolute; top:0; left:0; width:100%; height:100%; border-radius:16px;" 
+        frameborder="0" 
+        allowfullscreen 
+        src="https://www.youtube.com/embed/U0Y9Dj4erkQ">
+      </iframe>
+    </div>
     <div class="signature-pushi">pushi · videorreseña ética</div>
   </div>
 </section>
@@ -1122,7 +1129,6 @@
 
 <script>
   // ======================== OPTIMIZACIONES DE RENDIMIENTO ========================
-  // 1. Scroll suave con requestAnimationFrame y passive: true
   let ticking = false;
   function updateScrollProgress() {
     const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
@@ -1130,7 +1136,6 @@
     document.getElementById('progressBar').style.width = (winScroll / height) * 100 + "%";
     document.getElementById('backToTop').classList.toggle('visible', winScroll > 300);
     
-    // Actualizar clase activa en el menú
     const sections = ['inicio', 'equipo', 'manifiesto', 'analisis-visual', 'podcast', 'videoreaccion', 'infografia', 'caso-estudio', 'codigo-conducta', 'contacto', 'referencias'];
     let cur = sections[0];
     for (let s of sections) {
@@ -1150,7 +1155,7 @@
     }
   }, { passive: true });
   
-  // 2. Optimización de intervalos: evitar múltiples timers y limpiar en hidden
+  // ========== CARRUSEL Y STATUS ==========
   let carouselInterval = null;
   let techInterval = null;
   let currentIndex = 0;
@@ -1196,7 +1201,6 @@
     else startIntervals();
   });
   
-  // Cargar imágenes del carrusel desde localStorage
   function loadCarouselImages() {
     for (let i = 0; i < 3; i++) {
       const saved = localStorage.getItem(`carouselImg${i}`);
@@ -1205,7 +1209,7 @@
     updateCarouselImage();
   }
   
-  // ======================== COMPRESIÓN DE IMÁGENES (sin cambios) ========================
+  // ========== COMPRESIÓN DE IMÁGENES ==========
   function compressImage(file, callback) {
     const reader = new FileReader();
     reader.onload = function(e) {
@@ -1257,7 +1261,7 @@
     }, 3000);
   }
   
-  // Foto de perfil
+  // ========== PERFIL ==========
   function handleProfileImage(input) {
     if (!input.files || !input.files[0]) return;
     compressImage(input.files[0], (compressedDataUrl) => {
@@ -1282,7 +1286,7 @@
     }
   }
   
-  // Imágenes de análisis
+  // ========== ANÁLISIS VISUAL ==========
   function handleAnalisisImage(input, idx) {
     if (!input.files || !input.files[0]) return;
     compressImage(input.files[0], (compressedDataUrl) => {
@@ -1317,7 +1321,7 @@
     }
   }
   
-  // Textos editables
+  // ========== TEXTOS EDITABLES ==========
   function saveAnalisisText(index) {
     const newText = document.getElementById(`texto${index}`).innerHTML;
     localStorage.setItem(`analisisText${index}`, newText);
@@ -1331,7 +1335,7 @@
     }
   }
   
-  // Podcast, video, infografía
+  // ========== PODCAST ==========
   function savePodcastUrl() {
     const url = document.getElementById('podcastUrlInput').value;
     if (url) { localStorage.setItem('podcastUrl', url); document.getElementById('podcastAudio').src = url; showToast('✅ Audio guardado'); }
@@ -1341,19 +1345,11 @@
     const saved = localStorage.getItem('podcastUrl');
     if (saved) { document.getElementById('podcastUrlInput').value = saved; document.getElementById('podcastAudio').src = saved; }
   }
-  function saveVideoUrl() {
-    let url = document.getElementById('videoUrlInput').value;
-    if (url) {
-      let videoId = ''; const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/; const match = url.match(regExp);
-      videoId = (match && match[2].length === 11) ? match[2] : null;
-      if (videoId) url = `https://www.youtube.com/embed/${videoId}`;
-      localStorage.setItem('videoUrl', url); document.getElementById('videoFrame').src = url; showToast('✅ Video guardado');
-    } else showToast('⚠️ URL inválida', true);
-  }
-  function loadVideoUrl() {
-    const saved = localStorage.getItem('videoUrl');
-    if (saved) { document.getElementById('videoUrlInput').value = saved; document.getElementById('videoFrame').src = saved; }
-  }
+  
+  // ========== VIDEO (YA NO HAY INPUT) ==========
+  // El iframe ya tiene el src fijo, no se necesita función de carga.
+  
+  // ========== INFOGRAFÍA ==========
   function saveInfografiaUrl() {
     const url = document.getElementById('infografiaUrlInput').value;
     if (url) { localStorage.setItem('infografiaUrl', url); document.getElementById('infografiaImg').src = url; showToast('✅ Infografía guardada'); }
@@ -1364,7 +1360,7 @@
     if (saved) { document.getElementById('infografiaUrlInput').value = saved; document.getElementById('infografiaImg').src = saved; }
   }
   
-  // Cambiar imagen del carrusel
+  // ========== CARRUSEL CAMBIAR IMAGEN ==========
   function changeCurrentImage() {
     const input = document.createElement('input');
     input.type = 'file';
@@ -1385,7 +1381,7 @@
     input.click();
   }
   
-  // Tema, navegación, animaciones
+  // ========== TEMA, NAVEGACIÓN, FADE ==========
   function toggleTheme() {
     document.body.classList.toggle('light-mode');
     const isLight = document.body.classList.contains('light-mode');
@@ -1410,7 +1406,7 @@
     if (el) el.classList.add('active');
   }
   
-  // Observador fade-up
+  // ========== OBSERVADOR FADE-UP ==========
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) entry.target.classList.add('visible');
@@ -1418,14 +1414,13 @@
   }, { threshold: 0.1 });
   document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
   
-  // Inicialización
+  // ========== INICIO ==========
   document.addEventListener('DOMContentLoaded', () => {
     loadCarouselImages();
     loadProfileImage();
     loadAnalisisImages();
     loadAnalisisTexts();
     loadPodcastUrl();
-    loadVideoUrl();
     loadInfografiaUrl();
     loadTheme();
     startIntervals();
