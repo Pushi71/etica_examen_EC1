@@ -179,8 +179,6 @@
   #podcast { background: linear-gradient(135deg, var(--primary-dark), var(--primary-mid)); }
   #videoreaccion { background: linear-gradient(135deg, var(--primary-mid), var(--primary-dark)); }
   #infografia { background: linear-gradient(135deg, var(--primary-dark), var(--primary-light)); }
-  #caso-estudio { background: linear-gradient(135deg, var(--primary-mid), var(--primary-dark)); }
-  #codigo-conducta { background: linear-gradient(135deg, var(--primary-dark), var(--primary-mid)); }
   #contacto { background: linear-gradient(135deg, var(--primary-mid), var(--primary-dark)); }
   #referencias { background: linear-gradient(135deg, var(--primary-dark), #0A1622); }
 
@@ -871,8 +869,6 @@
     <li><a onclick="goTo('podcast', this)">Podcast</a></li>
     <li><a onclick="goTo('videoreaccion', this)">Video</a></li>
     <li><a onclick="goTo('infografia', this)">Infografía</a></li>
-    <li><a onclick="goTo('caso-estudio', this)">Caso</a></li>
-    <li><a onclick="goTo('codigo-conducta', this)">Código</a></li>
     <li><a onclick="goTo('contacto', this)">Contacto</a></li>
     <li><a onclick="goTo('referencias', this)">Refs</a></li>
   </ul>
@@ -1064,32 +1060,11 @@
 <section id="infografia">
   <div class="sec-header fade-up"><div class="sec-tag">Módulo IV</div><h2 class="sec-title">Infografía de <em>Sostenibilidad</em></h2></div>
   <div class="content-card fade-up" style="background:var(--bg-card); padding:40px; border-radius:28px; border:1px solid var(--border-glow);">
-    <img id="infografiaImg" src="" style="width:100%; border-radius:16px; margin-bottom:20px;">
+    <!-- Imagen cargada por defecto desde la carpeta images -->
+    <img id="infografiaImg" src="images/infografia.png" style="width:100%; border-radius:16px; margin-bottom:20px;" alt="Infografía de sostenibilidad">
     <div class="url-input-group"><label>🖼️ URL de la imagen:</label><input type="text" id="infografiaUrlInput" placeholder="https://ejemplo.com/infografia.png"><button class="save-btn" onclick="saveInfografiaUrl()">Guardar infografía</button></div>
     <div class="signature-pushi">pushi · diseño responsable</div>
   </div>
-</section>
-
-<!-- CASO DE ESTUDIO -->
-<section id="caso-estudio">
-  <div class="sec-header fade-up"><div class="sec-tag">Análisis Profundo</div><h2 class="sec-title">Caso de Estudio: <em>Cambridge Analytica</em></h2></div>
-  <div class="caso-card fade-up" style="background:var(--bg-card); padding:40px; border-radius:28px; border:1px solid var(--border-glow);">
-    <p><strong>Contexto:</strong> Extracción de datos de 87M de usuarios sin consentimiento.</p>
-    <p><strong>Mi postura ética:</strong> Privacidad por diseño como estándar mínimo y responsabilidad penal para ejecutivos.</p>
-    <div class="signature-pushi">pushi · caso emblemático</div>
-  </div>
-</section>
-
-<!-- CÓDIGO DE CONDUCTA -->
-<section id="codigo-conducta">
-  <div class="sec-header fade-up"><div class="sec-tag">Compromiso Personal</div><h2 class="sec-title">Mi Código de <em>Conducta</em></h2></div>
-  <div class="principles-grid fade-up">
-    <div class="principle-card"><div class="principle-number">01</div><strong>Transparencia algorítmica</strong><p style="margin-top:10px; font-size:0.85rem;">Documentar y explicar decisiones de IA</p></div>
-    <div class="principle-card"><div class="principle-number">02</div><strong>Privacidad por defecto</strong><p style="margin-top:10px; font-size:0.85rem;">Minimización de datos desde el diseño</p></div>
-    <div class="principle-card"><div class="principle-number">03</div><strong>Sostenibilidad digital</strong><p style="margin-top:10px; font-size:0.85rem;">Optimización energética y reducción de huella</p></div>
-    <div class="principle-card"><div class="principle-number">04</div><strong>Responsabilidad social</strong><p style="margin-top:10px; font-size:0.85rem;">Impacto positivo en comunidades vulnerables</p></div>
-  </div>
-  <div class="signature-pushi">pushi · principios fundamentales</div>
 </section>
 
 <!-- CONTACTO -->
@@ -1136,7 +1111,8 @@
     document.getElementById('progressBar').style.width = (winScroll / height) * 100 + "%";
     document.getElementById('backToTop').classList.toggle('visible', winScroll > 300);
     
-    const sections = ['inicio', 'equipo', 'manifiesto', 'analisis-visual', 'podcast', 'videoreaccion', 'infografia', 'caso-estudio', 'codigo-conducta', 'contacto', 'referencias'];
+    // Se actualiza el array de secciones (se eliminaron caso-estudio y codigo-conducta)
+    const sections = ['inicio', 'equipo', 'manifiesto', 'analisis-visual', 'podcast', 'videoreaccion', 'infografia', 'contacto', 'referencias'];
     let cur = sections[0];
     for (let s of sections) {
       const sec = document.getElementById(s);
@@ -1346,7 +1322,7 @@
     if (saved) { document.getElementById('podcastUrlInput').value = saved; document.getElementById('podcastAudio').src = saved; }
   }
   
-  // ========== VIDEO (YA NO HAY INPUT) ==========
+  // ========== VIDEO ==========
   // El iframe ya tiene el src fijo, no se necesita función de carga.
   
   // ========== INFOGRAFÍA ==========
@@ -1357,7 +1333,11 @@
   }
   function loadInfografiaUrl() {
     const saved = localStorage.getItem('infografiaUrl');
-    if (saved) { document.getElementById('infografiaUrlInput').value = saved; document.getElementById('infografiaImg').src = saved; }
+    if (saved) { 
+      document.getElementById('infografiaUrlInput').value = saved; 
+      document.getElementById('infografiaImg').src = saved; 
+    }
+    // Si no hay URL guardada, mantenemos la imagen por defecto (ya está en el HTML)
   }
   
   // ========== CARRUSEL CAMBIAR IMAGEN ==========
