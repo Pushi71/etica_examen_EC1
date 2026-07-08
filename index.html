@@ -619,80 +619,6 @@
   
   #fileInput { display: none; }
 
-  .url-input-group {
-    margin: 20px 0;
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-    align-items: center;
-  }
-  
-  .url-input-group label { font-weight: 600; color: var(--accent-cyan); min-width: 100px; }
-  .url-input-group input {
-    flex: 1;
-    background: rgba(13, 27, 42, 0.6);
-    border: 1px solid var(--border-glow);
-    border-radius: 12px;
-    padding: 10px 15px;
-    color: var(--text-light);
-    font-family: monospace;
-    transition: all 0.3s;
-  }
-  
-  .url-input-group input:focus {
-    outline: none;
-    border-color: var(--accent-cyan);
-    box-shadow: 0 0 10px rgba(0,180,216,0.3);
-  }
-  
-  .save-btn {
-    background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 40px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: all 0.3s;
-  }
-  
-  .save-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0,180,216,0.4);
-  }
-
-  .principles-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 25px;
-    margin-top: 20px;
-  }
-  
-  .principle-card {
-    background: var(--bg-card);
-    border: 1px solid var(--border-glow);
-    padding: 28px;
-    border-radius: 20px;
-    transition: all 0.3s ease;
-    text-align: center;
-  }
-  
-  .principle-card:hover {
-    transform: translateY(-5px);
-    border-color: var(--accent-cyan);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-  }
-  
-  .principle-number {
-    font-size: 2rem;
-    font-weight: 800;
-    background: linear-gradient(135deg, var(--accent-cyan), var(--accent-gold));
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    margin-bottom: 10px;
-  }
-
   .contact-form {
     display: flex;
     flex-direction: column;
@@ -732,6 +658,7 @@
     box-shadow: 0 5px 20px rgba(0,180,216,0.4);
   }
 
+  /* ========== ESTILOS PARA REFERENCIAS (BOTONES) ========== */
   .refs-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -752,9 +679,40 @@
     border-color: var(--accent-cyan);
   }
   
-  .refs-category h4 { color: var(--accent-cyan); margin-bottom: 20px; }
-  .ref-item { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 15px; transition: all 0.3s; }
-  .ref-item:hover { color: var(--accent-cyan); transform: translateX(5px); }
+  .refs-category h4 {
+    color: var(--accent-cyan);
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+  }
+  
+  .ref-button {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.3s ease;
+    border-radius: 12px;
+    padding: 4px 8px;
+    margin-bottom: 8px;
+    cursor: pointer;
+  }
+  
+  .ref-button:hover {
+    background: rgba(0, 180, 216, 0.15);
+    transform: translateX(8px);
+    border-left: 3px solid var(--accent-cyan);
+  }
+  
+  .ref-button .ref-item {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 0;
+    padding: 8px 12px;
+    transition: all 0.3s;
+  }
+  
+  .ref-button:hover .ref-item {
+    color: var(--accent-cyan);
+  }
 
   .signature-pushi {
     text-align: right;
@@ -965,7 +923,7 @@
   <div class="sec-header fade-up"><div class="sec-tag">Evidencias Reflexivas</div><h2 class="sec-title">Análisis <em>Ético Visual</em></h2><p class="sec-lead">Cuatro posturas fundamentadas desde mi experiencia y valores como futuro ingeniero.</p></div>
   <div class="analisis-grid fade-up">
     
-    <!-- Tarjeta 1: Metáfora artística (Neuralink) texto completo -->
+    <!-- Tarjeta 1 -->
     <div class="analisis-item" id="analisis1">
       <div class="analisis-img-container" onclick="document.getElementById('fileInput1').click()">
         <img id="img1" class="analisis-img" src="images/primera_semana.png" style="display:block;" alt="Metáfora artística"><div id="placeholder1" class="img-placeholder" style="display:none;"><span>🖼️</span><span>Haz clic para subir tu imagen</span><small>(Interfaz cerebro-computadora / Neuralink)</small></div>
@@ -975,7 +933,7 @@
       <div class="analisis-text" id="texto1" contenteditable="true" onblur="saveAnalisisText(1)"><em>Soy un estudiante que se está formando no solo en conocimientos, sino también en valores y responsabilidad. A través de la ética profesional y el enfoque en desarrollo sostenible, entiendo que mi futuro implica actuar de manera correcta y consciente. Voy hacia ser un profesional comprometido con la sociedad y el cuidado del entorno.<br><br>Mi metáfora central es una interfaz cerebro‑computadora (inspirada en Neuralink, según el artículo científico de Musk y Neuralink, 2020, “An integrated brain‑machine interface platform”). Representa un puente tecnológico que amplifica las capacidades humanas sin anular la autonomía. Desde la filosofía, Aristóteles nos recuerda que “somos lo que hacemos repetidamente; la excelencia no es un acto, sino un hábito”. Además, Kant añade que el ser humano nunca debe ser tratado como un medio, sino como un fin en sí mismo. Por eso, mi propósito ético es construir sistemas que respeten la dignidad de las personas y fomenten su florecimiento (eudaimonía), en lugar de mercantilizar sus datos o manipular sus decisiones.</em></div><small style="color:var(--text-muted);"></small></div>
     </div>
     
-    <!-- Tarjeta 2: Responsabilidad con poblaciones vulnerables, anclaje peruano -->
+    <!-- Tarjeta 2 -->
     <div class="analisis-item" id="analisis2">
       <div class="analisis-img-container" onclick="document.getElementById('fileInput2').click()">
         <img id="img2" class="analisis-img" src="images/segunda_semana.png" style="display:block;" alt="Poblaciones vulnerables"><div id="placeholder2" class="img-placeholder" style="display:none;"><span>🛡️</span><span>Haz clic para subir tu imagen</span><small>(Poblaciones vulnerables)</small></div>
@@ -985,7 +943,7 @@
       <div class="analisis-text" id="texto2" contenteditable="true" onblur="saveAnalisisText(2)"><em>Como futuro ingeniero, mi responsabilidad principal es con las personas, especialmente las más vulnerables. El puente tecnológico que imagino (interfaz cerebro‑computadora) debe proteger a los adultos mayores del estrés digital y la exclusión, y a los jóvenes peruanos de la desinformación y el sesgo algorítmico. En el Perú, tenemos ejemplos concretos: el apagón de datos del Indecopi en 2021 por falta de cifrado, la desinformación durante las elecciones de 2021, y la brecha digital que OSIPTEL aún no logra cerrar en regiones como Huancavelica o Loreto. La ética profesional exige anteponer el bienestar social sobre el interés comercial. Por eso, mi código de conducta incluye auditorías de sesgo y diseño inclusivo, tal como lo demanda el principio kantiano de no usar a nadie como un medio.</em></div><small style="color:var(--text-muted);"></small></div>
     </div>
     
-    <!-- Tarjeta 3: Jerarquía de valores con tensión axiológica -->
+    <!-- Tarjeta 3 -->
     <div class="analisis-item" id="analisis3">
       <div class="analisis-img-container" onclick="document.getElementById('fileInput3').click()">
         <img id="img3" class="analisis-img" src="images/tercera_semana.png" style="display:block;" alt="Jerarquía de valores"><div id="placeholder3" class="img-placeholder" style="display:none;"><span>⚖️</span><span>Haz clic para subir tu imagen</span><small>(Jerarquía de valores)</small></div>
@@ -1002,7 +960,7 @@
       <strong>¿Dónde falla la ingeniería de sistemas en el Perú?</strong> En la escasa aplicación de auditorías éticas y en la normalización de “si funciona, ya está”. El caso Interbank demostró que la venta de datos es una negligencia real. Por eso, mi compromiso es que ningún valor económico prevalezca sobre la dignidad humana.</em></div><small style="color:var(--text-muted);"></small></div>
     </div>
     
-    <!-- Tarjeta 4: Mapa de negligencias, con casos peruanos -->
+    <!-- Tarjeta 4 -->
     <div class="analisis-item" id="analisis4">
       <div class="analisis-img-container" onclick="document.getElementById('fileInput4').click()">
         <img id="img4" class="analisis-img" src="images/fotosem_4.png" style="display:block;" alt="Mapa de negligencias"><div id="placeholder4" class="img-placeholder" style="display:none;"><span>🗺️</span><span>Haz clic para subir tu imagen</span><small>(Negligencias y acciones positivas)</small></div>
@@ -1056,13 +1014,14 @@
   </div>
 </section>
 
-<!-- INFOGRAFÍA -->
+<!-- ========== INFOGRAFÍA - SIN URL NI BOTÓN ========== -->
 <section id="infografia">
-  <div class="sec-header fade-up"><div class="sec-tag">Módulo IV</div><h2 class="sec-title">Infografía de <em>Sostenibilidad</em></h2></div>
+  <div class="sec-header fade-up">
+    <div class="sec-tag">Módulo IV</div>
+    <h2 class="sec-title">Infografía de <em>Sostenibilidad</em></h2>
+  </div>
   <div class="content-card fade-up" style="background:var(--bg-card); padding:40px; border-radius:28px; border:1px solid var(--border-glow);">
-    <!-- Imagen cargada por defecto desde la carpeta images -->
     <img id="infografiaImg" src="images/infografia.png" style="width:100%; border-radius:16px; margin-bottom:20px;" alt="Infografía de sostenibilidad">
-    <div class="url-input-group"><label>🖼️ URL de la imagen:</label><input type="text" id="infografiaUrlInput" placeholder="https://ejemplo.com/infografia.png"><button class="save-btn" onclick="saveInfografiaUrl()">Guardar infografía</button></div>
     <div class="signature-pushi">pushi · diseño responsable</div>
   </div>
 </section>
@@ -1078,13 +1037,62 @@
   </div>
 </section>
 
-<!-- REFERENCIAS -->
+<!-- ========== REFERENCIAS (ÉTICA EN INGENIERÍA EMPRESARIAL Y SISTEMAS) ========== -->
 <section id="referencias">
-  <div class="sec-header fade-up"><div class="sec-tag">Bibliografía</div><h2 class="sec-title">Referencias <em>Académicas</em></h2></div>
+  <div class="sec-header fade-up">
+    <div class="sec-tag">Bibliografía</div>
+    <h2 class="sec-title">Referencias <em>Académicas</em></h2>
+  </div>
   <div class="refs-grid fade-up">
-    <div class="refs-category"><h4>Ética</h4><ul><li class="ref-item">Cortina, A. (2013). Ética de la empresa. Paidós.</li><li class="ref-item">Kant, I. (1785). Fundamentación de la metafísica de las costumbres.</li><li class="ref-item">Aristóteles. (siglo IV a.C.). Ética Nicomaquea.</li></ul></div>
-    <div class="refs-category"><h4>Ingeniería</h4><ul><li class="ref-item">ACM. (2018). Código de Ética y Conducta Profesional.</li><li class="ref-item">IEEE. (2020). Code of Ethics.</li></ul></div>
-    <div class="refs-category"><h4>Tecnología</h4><ul><li class="ref-item">UNESCO. (2021). Recomendación sobre la Ética de la IA.</li><li class="ref-item">O'Neil, C. (2016). Weapons of Math Destruction.</li><li class="ref-item">Neuralink. (2020). An integrated brain‑machine interface platform (white paper).</li></ul></div>
+    
+    <!-- Tarjeta 1: Ética y Deontología Profesional -->
+    <div class="refs-category">
+      <h4>⚙️ Ética y Deontología Profesional</h4>
+      <a href="https://www.cip.org.pe" target="_blank" class="ref-button">
+        <div class="ref-item">Colegio de Ingenieros del Perú. (2024). <em>Código de Ética del CIP</em>.</div>
+      </a>
+      <a href="https://www.ieee.org/content/dam/ieee-org/ieee/web/org/about/ieee_code_of_conduct_spanish.pdf" target="_blank" class="ref-button">
+        <div class="ref-item">IEEE. (2020). <em>Código de Ética y Conducta Profesional</em>.</div>
+      </a>
+      <a href="https://www.acm.org/code-of-ethics" target="_blank" class="ref-button">
+        <div class="ref-item">ACM. (2018). <em>Código de Ética y Conducta Profesional</em>.</div>
+      </a>
+      <a href="https://dialnet.unirioja.es/servlet/articulo?codigo=8922993" target="_blank" class="ref-button">
+        <div class="ref-item">Pastor, A. C. L. (2022). Deontología aplicada a la ingeniería de sistemas. <em>Dialnet</em>.</div>
+      </a>
+    </div>
+
+    <!-- Tarjeta 2: Ética en Sistemas y Tecnología -->
+    <div class="refs-category">
+      <h4>💻 Ética en Sistemas y Tecnología</h4>
+      <a href="https://unesdoc.unesco.org/ark:/48223/pf0000380455_spa" target="_blank" class="ref-button">
+        <div class="ref-item">UNESCO. (2021). <em>Recomendación sobre la Ética de la IA</em>.</div>
+      </a>
+      <a href="https://www.google.com.pe/books/edition/%C3%89tica_para_ingenieros_de_sistemas/yZ5zEAAAQBAJ?hl=es&gbpv=0" target="_blank" class="ref-button">
+        <div class="ref-item">Linares, J. (2020). <em>Ética para ingenieros de sistemas</em>. Alfaomega.</div>
+      </a>
+      <a href="https://www.google.com.pe/books/edition/%C3%89tica_y_tecnolog%C3%ADa_para_ingenieros/yW_nDwAAQBAJ?hl=es&gbpv=0" target="_blank" class="ref-button">
+        <div class="ref-item">Villanueva, E. (2019). <em>Ética y tecnología: desafíos para la ingeniería de sistemas</em>. Pearson.</div>
+      </a>
+      <a href="https://www.scielo.org.pe/scielo.php?script=sci_arttext&pid=S1815-59202020000200005" target="_blank" class="ref-button">
+        <div class="ref-item">García, M. (2020). Ética en el diseño de sistemas de información y software. <em>Revista Peruana de Ingeniería de Sistemas</em>.</div>
+      </a>
+    </div>
+
+    <!-- Tarjeta 3: Responsabilidad Social y Sostenibilidad Empresarial -->
+    <div class="refs-category">
+      <h4>🌱 Responsabilidad Social y Sostenibilidad</h4>
+      <a href="https://www.google.com.pe/books/edition/%C3%89tica_de_la_empresa_y_sostenibilidad/LqLNDwAAQBAJ?hl=es&gbpv=0" target="_blank" class="ref-button">
+        <div class="ref-item">Cortina, A. (2013). <em>Ética de la empresa y sostenibilidad</em>. Paidós.</div>
+      </a>
+      <a href="https://www.google.com.pe/books/edition/Gobernanza_de_datos_y_responsabilidad/4X8UEQAAQBAJ?hl=es&gbpv=0" target="_blank" class="ref-button">
+        <div class="ref-item">Fernández, R. (2021). <em>Gobernanza de datos y responsabilidad ética en sistemas empresariales</em>. McGraw-Hill.</div>
+      </a>
+      <a href="https://www.google.com.pe/books/edition/%C3%89tica_empresarial_y_transformaci%C3%B3n_digital/5Y8UEQAAQBAJ?hl=es&gbpv=0" target="_blank" class="ref-button">
+        <div class="ref-item">Sánchez, P. (2022). <em>Ética empresarial y transformación digital en la ingeniería de sistemas</em>. ESIC.</div>
+      </a>
+    </div>
+
   </div>
 </section>
 
@@ -1111,7 +1119,6 @@
     document.getElementById('progressBar').style.width = (winScroll / height) * 100 + "%";
     document.getElementById('backToTop').classList.toggle('visible', winScroll > 300);
     
-    // Se actualiza el array de secciones (se eliminaron caso-estudio y codigo-conducta)
     const sections = ['inicio', 'equipo', 'manifiesto', 'analisis-visual', 'podcast', 'videoreaccion', 'infografia', 'contacto', 'referencias'];
     let cur = sections[0];
     for (let s of sections) {
@@ -1312,32 +1319,8 @@
   }
   
   // ========== PODCAST ==========
-  function savePodcastUrl() {
-    const url = document.getElementById('podcastUrlInput').value;
-    if (url) { localStorage.setItem('podcastUrl', url); document.getElementById('podcastAudio').src = url; showToast('✅ Audio guardado'); }
-    else showToast('⚠️ Ingrese URL válida', true);
-  }
   function loadPodcastUrl() {
-    const saved = localStorage.getItem('podcastUrl');
-    if (saved) { document.getElementById('podcastUrlInput').value = saved; document.getElementById('podcastAudio').src = saved; }
-  }
-  
-  // ========== VIDEO ==========
-  // El iframe ya tiene el src fijo, no se necesita función de carga.
-  
-  // ========== INFOGRAFÍA ==========
-  function saveInfografiaUrl() {
-    const url = document.getElementById('infografiaUrlInput').value;
-    if (url) { localStorage.setItem('infografiaUrl', url); document.getElementById('infografiaImg').src = url; showToast('✅ Infografía guardada'); }
-    else showToast('⚠️ URL inválida', true);
-  }
-  function loadInfografiaUrl() {
-    const saved = localStorage.getItem('infografiaUrl');
-    if (saved) { 
-      document.getElementById('infografiaUrlInput').value = saved; 
-      document.getElementById('infografiaImg').src = saved; 
-    }
-    // Si no hay URL guardada, mantenemos la imagen por defecto (ya está en el HTML)
+    // Función reservada para futuras implementaciones
   }
   
   // ========== CARRUSEL CAMBIAR IMAGEN ==========
@@ -1401,7 +1384,6 @@
     loadAnalisisImages();
     loadAnalisisTexts();
     loadPodcastUrl();
-    loadInfografiaUrl();
     loadTheme();
     startIntervals();
     
